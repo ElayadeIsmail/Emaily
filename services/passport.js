@@ -20,6 +20,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: "/auth/google/callback",
+      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id });
@@ -32,5 +33,3 @@ passport.use(
     }
   )
 );
-
-// emaily-dev mongodb+srv://sam:<password>@cluster0.kuzca.mongodb.net/<dbname>?retryWrites=true&w=majority
